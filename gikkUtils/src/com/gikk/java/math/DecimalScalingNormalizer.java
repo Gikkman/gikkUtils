@@ -9,15 +9,20 @@ package com.gikk.java.math;
  * @author Gikkman
  *
  */
-public class DecimalScalingNormalize {
+public class DecimalScalingNormalizer implements Normalizer{
 
-	public static double[] normalize(double[] in){
+	/** Complexity: O( 2 * n )
+	 */
+	@Override
+	public double[] normalize(double[] in){
 		int scale  = findScale(in);
 		
 		return normalize(in, scale);
 	}
 
-	public static double[] normalize(double[] in, int scale) {
+	/** Complexity: O( n )
+	 */
+	public double[] normalize(double[] in, int scale) {
 		double[] out  = new double[in.length];
 		
 		for(int i = 0; i < in.length; i++)
@@ -26,17 +31,15 @@ public class DecimalScalingNormalize {
 		return out;
 	}
 
-	public static double normalize(double in, int scale) {
+	/** Complexity: O( 1 )
+	 */
+	public double normalize(double in, int scale) {
 		return in / Math.pow(10, scale);
 	}	
-	
-	public static double[] denormalize(double[] in){
-		int scale = findScale(in);
-		
-		return denormalize(in, scale);
-	}
 
-	public static double[] denormalize(double[] in, int scale) {
+	/** Complexity: O( n )
+	 */
+	public double[] denormalize(double[] in, int scale) {
 		double[] out  = new double[in.length];
 		
 		for(int i = 0; i < in.length; i++)
@@ -45,11 +48,15 @@ public class DecimalScalingNormalize {
 		return out;
 	}
 
-	public static double denormalize(double in, int scale) {
+	/** Complexity: O( 1 )
+	 */
+	public double denormalize(double in, int scale) {
 		return in * Math.pow(10, scale);
 	}
 
-	private static int findScale(double[] in) {
+	/** Complexity: O( n )
+	 */
+	private int findScale(double[] in) {
 		double max = Double.NEGATIVE_INFINITY;
 		for( double val : in)
 			if( Math.abs(val) > max )

@@ -9,7 +9,7 @@ package com.gikk.java.math;
  * @author Gikkman
  *
  */
-public class MinMaxNormalize {
+public class MinMaxNormalizer implements Normalizer{
 	
 	/********************************************************************************************************/
 	//													DOUBLES
@@ -17,7 +17,8 @@ public class MinMaxNormalize {
 	
 	/**Complexity: O( 2 * N )
 	 */
-	public static double[] normalize(double[] in){	
+	@Override
+	public double[] normalize(double[] in){	
 		double min = Double.POSITIVE_INFINITY, max = Double.NEGATIVE_INFINITY;
 		
 		//Find minimum and maximum value in the array
@@ -33,7 +34,7 @@ public class MinMaxNormalize {
 	
 	/**Complexity: O( N )
 	 */
-	public static double[] normalize(double[] in, double min, double max){
+	public double[] normalize(double[] in, double min, double max){
 		//Create normalized data
 		double[] out = new double[ in.length ];	
 		for( int i = 0; i < out.length; i++){
@@ -45,29 +46,14 @@ public class MinMaxNormalize {
 	
 	/**Complexity: O( 1 )
 	 */
-	public static double normalize(double in, double min, double max){
+	public double normalize(double in, double min, double max){
 		return (in - min) / (max - min);
-	}
-	
-	/**Complexity: O( 2 * N )
-	 */
-	public static double[] denormalize(double[] in){
-		double min = Double.POSITIVE_INFINITY, max = Double.NEGATIVE_INFINITY;
-		
-		//Find minimum and maximum value in the array
-		for( double val : in ){
-			if( val > max )
-				max = val;
-			if( val < min )
-				min = val;
-		}
-		
-		return denormalize(in, min, max);
 	}
 
 	/**Complexity: O( N )
 	 */
-	public static double[] denormalize(double[] in, double min, double max) {
+	
+	public double[] denormalize(double[] in, double min, double max) {
 		//Create denormalized data
 		double[] out = new double[ in.length ];	
 		for( int i = 0; i < out.length; i++){
@@ -79,7 +65,7 @@ public class MinMaxNormalize {
 	
 	/**Complexity: O( 1 )
 	 */
-	public static double denormalize(double in, double min, double max){
+	public double denormalize(double in, double min, double max){
 		return in * (max - min) + min;
 	}
 }

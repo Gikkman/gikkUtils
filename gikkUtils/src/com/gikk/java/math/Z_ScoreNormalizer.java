@@ -16,7 +16,7 @@ import java.util.Arrays;
  * @author Gikkman
  *
  */
-public class zScoreNormalize{
+public class Z_ScoreNormalizer implements Normalizer{
 	
 	/********************************************************************************************************/
 	//													DOUBLES
@@ -24,7 +24,8 @@ public class zScoreNormalize{
 	
 	/**Complexity: O( 3 * N )
 	 */
-	public static double[] normalize(double[] in){
+	@Override
+	public double[] normalize(double[] in){
 		double mean = calcMean(in);
 		double stdDev = calcStdDev(in, mean);
 		
@@ -33,7 +34,7 @@ public class zScoreNormalize{
 
 	/**Complexity: O( N )
 	 */
-	public static double[] normalize(double[] in, double mean, double stdDev) {
+	public double[] normalize(double[] in, double mean, double stdDev) {
 		double[] out = new double[in.length];
 		
 		for(int i = 0; i < in.length; i++){
@@ -45,22 +46,13 @@ public class zScoreNormalize{
 
 	/**Complexity: O( 1 )
 	 */
-	public static double normalize(double in, double mean, double stdDev) {
+	public double normalize(double in, double mean, double stdDev) {
 		return (in - mean) / stdDev;
-	}
-	
-	/**Complexity: O( 3 * N )
-	 */
-	public static double[] denormalize(double[] in){
-		double mean = calcMean(in);
-		double stdDev = calcStdDev(in, mean);
-		
-		return denormalize(in, mean, stdDev);
 	}
 
 	/**Complexity: O( N )
 	 */
-	private static double[] denormalize(double[] in, double mean, double stdDev) {
+	public double[] denormalize(double[] in, double mean, double stdDev) {
 		double[] out = new double[in.length];
 		
 		for(int i = 0; i < in.length; i++){
@@ -72,15 +64,15 @@ public class zScoreNormalize{
 
 	/**Complexity: O( 1 )
 	 */
-	private static double denormalize(double in, double mean, double stdDev) {
+	public double denormalize(double in, double mean, double stdDev) {
 		return in * stdDev + mean;
 	}
 
-	private static double calcMean(double[] in) {
+	private double calcMean(double[] in) {
 		return Arrays.stream(in).sum() / in.length;
 	}
 	
-	private static double calcStdDev(double[] in, double mean) {
+	private double calcStdDev(double[] in, double mean) {
 		double val = 0;
 		for( double d : in )
 			val += (d - mean)*(d-mean);
