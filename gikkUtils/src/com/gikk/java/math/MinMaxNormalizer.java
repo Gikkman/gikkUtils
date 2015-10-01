@@ -1,6 +1,9 @@
 package com.gikk.java.math;
 
 /**MinMax normalization of the data, ranging from 0 - 1. <br>See <a href=http://www.cs.indiana.edu/~predrag/classes/2005springi400/lecture_notes_4_1.pdf> Indiana.edu </a href> for algorithm details
+ * <br><br>
+ * This class implements the Normalizer interface
+ * 
  * <br><br><code>
  * Normalize (e) = ( e - min(E) ) / ( max(E) - min(E) )
  * </code>

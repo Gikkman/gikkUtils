@@ -2,7 +2,11 @@ package com.gikk.java.math;
 
 import java.util.Arrays;
 
-/**Z Score normalization in range 0 - 1. <br>See <a href=http://www.cs.indiana.edu/~predrag/classes/2005springi400/lecture_notes_4_1.pdf> Indiana.edu </a href> for algorithm details
+/**Z Score normalization in range 0 - 1. <br>
+ * See <a href=http://www.cs.indiana.edu/~predrag/classes/2005springi400/lecture_notes_4_1.pdf> Indiana.edu </a href> for algorithm details
+ * <br><br>
+ * This class implements the Normalizer interface
+ *
  * 
  * <br><br><code>
  * Normalize (e) = ( e - mean(E) ) / (stdDev(E) )

@@ -10,6 +10,13 @@ public class Box {
 			out[i] = in[i];
 		return out;
 	}	
+	
+	public static Integer[] integerArray(int ... in){
+		Integer[] out = new Integer[in.length];
+		for(int i = 0; i < in.length; i++)
+			out[i] = in[i];
+		return out;
+	}
 	//endregion *********************************************************************************************
 	//*******************************************************************************************************
 

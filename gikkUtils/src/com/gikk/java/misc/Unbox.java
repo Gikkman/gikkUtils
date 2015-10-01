@@ -10,6 +10,13 @@ public class Unbox {
 			out[i] = in[i];
 		return out;
 	}	
+	
+	public static int[] integerArray(Integer ... in){
+		int[] out = new int[in.length];
+		for(int i = 0; i < in.length; i++)
+			out[i] = in[i];
+		return out;
+	}	
 	//endregion *********************************************************************************************
 	//*******************************************************************************************************
 
