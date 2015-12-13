@@ -3,9 +3,9 @@ package com.gikk.java.aop;
 import java.util.HashMap;
 import java.util.Map;
 
-public class MethodMapper {
+public class SingleMethodMapper {
 	private static Map<String, Invocation> map = new HashMap<>();	
-	private MethodMapper() {}
+	private SingleMethodMapper() {}
 		
 		
 	/**Adds a method to the method map, which can later be invoked. If the key is already in use, this method will instead return false

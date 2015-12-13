@@ -1,17 +1,18 @@
 package com.gikk.java.debug;
 
+/**Class 
+ * 
+ * @author Gikkman
+ *
+ */
 public class StackTrace {
-	/**Returns a link to a code position
-	 * Intended to be inserted in an error message. 
+	/**Returns a link to a code position.
+	 * Intended to be inserted in an error message.
+	 * <br>This will produce an error message in the output console with a clickable link that opens the file that caused the error.
 	 * 
-	 * The "depth" decides how many stack-images up you want displayed.
-	 * <br><b>Example:</b>
-	 * <br>I call a method foo() and in foo() i call method bar()
-	 * from bar(), I want a message with a link to foo().
-	 * In that case, depth is 1 (since foo() is one image
-	 * 	"up" from bar() ). If I wanted it to point to the
-	 *  line which caused the error in bar(), depth is 0.
-	 * @return 
+	 * <br><br><b>Example</b>
+	 * <br><code>System.err.println("Error. Unknown args. " + StackTrace.getStackPos() );</code>
+	 * 
 	 */
 	public static String getStackPos(){
 		String out = "   ";

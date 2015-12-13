@@ -14,7 +14,7 @@ public class ReferencePasser {
 	 */
 	public static <T> void storeReference (String key, T value){
 		
-		MethodMapper.addMethod(key, new ReferenceWrapper<T>(value) );	
+		SingleMethodMapper.addMethod(key, new ReferenceWrapper<T>(value) );	
 		
 	}
 	
@@ -29,7 +29,7 @@ public class ReferencePasser {
 	 */
 	public static <T> T getReference (String key){
 		AtomicReference<T> ref = new AtomicReference<T>();
-		if (MethodMapper.invoke(key, key, ref) )
+		if (SingleMethodMapper.invoke(key, key, ref) )
 			return ( ref.get() );
 		else{
 			System.err.println("The requested key \"" + key + "\" did not map to a reference. " );
@@ -48,7 +48,7 @@ public class ReferencePasser {
 		@Override
 		public void execute(Object... args) {
 			((AtomicReference<E>) args[1]).set( ref.get() );
-			MethodMapper.removeMethod( (String) args[0] );
+			SingleMethodMapper.removeMethod( (String) args[0] );
 		}		
 	}
 }
