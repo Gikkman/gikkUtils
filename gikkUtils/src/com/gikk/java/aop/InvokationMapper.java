@@ -66,7 +66,7 @@ public class InvokationMapper {
 	 * @param key
 	 * @return All invocations registered for a certain key OR null if no invocations are registered at the key
 	 */
-	public static synchronized Collection<Invocation> invoke(String key){
+	public static synchronized Collection<Invocation> getInvokations(String key){
 		if(!map.containsKey(key)){		
 			return null;
 		}
